@@ -13,7 +13,7 @@ export interface RankedRegionListProps {
 export function RankedRegionList({ title, items, className }: RankedRegionListProps) {
   return (
     <div className={className}>
-      {title ? <p className="text-xs font-semibold uppercase tracking-wide text-ink">{title}</p> : null}
+      {title ? <p className="text-sm font-semibold text-text-main">{title}</p> : null}
       <ol className={`flex flex-col gap-3 ${title ? 'mt-3' : ''}`}>
         {items.map((item) => (
           <li key={item.rank} className="flex items-center gap-3">

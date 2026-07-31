@@ -1,0 +1,23 @@
+export interface ProvinceMockEntry {
+  code: string;
+  progress: number;
+  regencies: number;
+  districts: number;
+  villages: number;
+  updatedAt: string;
+  status: string;
+}
+
+/** Dummy detail data for the mockup — only the 10 named provinces used elsewhere have full detail. */
+export const PROVINCE_MOCK_DATA: Record<string, ProvinceMockEntry> = {
+  'DI Yogyakarta': { code: 'ID-YO', progress: 98.72, regencies: 5, districts: 78, villages: 438, updatedAt: '31 Juli 2026', status: 'Sangat Baik' },
+  Bali: { code: 'ID-BA', progress: 95.31, regencies: 9, districts: 57, villages: 716, updatedAt: '31 Juli 2026', status: 'Sangat Baik' },
+  'DKI Jakarta': { code: 'ID-JK', progress: 93.18, regencies: 6, districts: 44, villages: 267, updatedAt: '30 Juli 2026', status: 'Sangat Baik' },
+  'Jawa Tengah': { code: 'ID-JT', progress: 90.45, regencies: 35, districts: 576, villages: 8562, updatedAt: '30 Juli 2026', status: 'Baik' },
+  'Jawa Timur': { code: 'ID-JI', progress: 88.21, regencies: 38, districts: 666, villages: 8494, updatedAt: '30 Juli 2026', status: 'Baik' },
+  'Kalimantan Timur': { code: 'ID-KI', progress: 87.03, regencies: 10, districts: 103, villages: 1038, updatedAt: '29 Juli 2026', status: 'Baik' },
+  'Sulawesi Selatan': { code: 'ID-SN', progress: 85.79, regencies: 24, districts: 311, villages: 3059, updatedAt: '29 Juli 2026', status: 'Baik' },
+  'Jawa Barat': { code: 'ID-JB', progress: 84.12, regencies: 27, districts: 627, villages: 5957, updatedAt: '30 Juli 2026', status: 'Baik' },
+  'Sumatera Barat': { code: 'ID-SB', progress: 81.76, regencies: 19, districts: 179, villages: 1265, updatedAt: '28 Juli 2026', status: 'Cukup' },
+  Lampung: { code: 'ID-LA', progress: 79.34, regencies: 15, districts: 229, villages: 2654, updatedAt: '28 Juli 2026', status: 'Cukup' },
+};

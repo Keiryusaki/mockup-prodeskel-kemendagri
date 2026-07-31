@@ -1,42 +1,94 @@
+'use client';
+
+import { useMemo, useState } from 'react';
+import { Check, ArrowRight } from 'lucide-react';
 import { Button, Icon, ChevronDown, Dropdown, DropdownTrigger, DropdownPanel, DropdownItem } from '@/ui';
 import { ChartPanel } from '@/components/data-display/ChartPanel';
 import { ProgressBarList } from '@/components/data-display/ProgressBarList';
 import { RankedRegionList } from '@/components/data-display/RankedRegionList';
 import { PROVINCE_PROGRESS, TOP_REGENCIES } from './region-data';
 
-export function ProgressSummary() {
+type SortMode = 'top' | 'bottom' | 'all';
+
+const SORT_LABELS: Record<SortMode, string> = {
+  top: '10 Provinsi Tertinggi',
+  bottom: '10 Provinsi Terendah',
+  all: 'Semua Provinsi',
+};
+
+export interface ProgressSummaryProps {
+  selectedProvince?: string | null;
+}
+
+export function ProgressSummary({ selectedProvince }: ProgressSummaryProps) {
+  const [sortMode, setSortMode] = useState<SortMode>('top');
+
+  const sortedProvinces = useMemo(() => {
+    const base = [...PROVINCE_PROGRESS];
+    if (sortMode === 'bottom') return base.sort((a, b) => a.progress - b.progress);
+    return base.sort((a, b) => b.progress - a.progress);
+  }, [sortMode]);
+
   return (
     <ChartPanel
       title="Ringkasan Progres Nasional"
-      description="Progres pendataan berdasarkan provinsi"
+      description="Perbandingan capaian pendataan desa dan kelurahan berdasarkan provinsi."
       action={
-        <Dropdown placement="bottom-end">
-          <DropdownTrigger>
-            <Button variant="outline" size="sm" iconRight={<Icon icon={ChevronDown} size="xs" aria-hidden="true" />}>
-              Top Provinsi
-            </Button>
-          </DropdownTrigger>
-          <DropdownPanel>
-            <DropdownItem>Top Provinsi</DropdownItem>
-            <DropdownItem>Semua Provinsi</DropdownItem>
-          </DropdownPanel>
-        </Dropdown>
+        <div className="flex items-center gap-2">
+          <span className="hidden rounded-md border border-border-subtle px-2.5 py-1.5 text-xs font-medium text-ink sm:inline-block">
+            Tahun 2026
+          </span>
+          <Dropdown placement="bottom-end">
+            <DropdownTrigger>
+              <Button
+                variant="outline"
+                size="sm"
+                iconRight={<Icon icon={ChevronDown} size="xs" aria-hidden="true" />}
+                className="focus-visible:!outline-pd-primary-300"
+              >
+                {SORT_LABELS[sortMode]}
+              </Button>
+            </DropdownTrigger>
+            <DropdownPanel className="min-w-[220px]">
+              {(Object.keys(SORT_LABELS) as SortMode[]).map((mode) => (
+                <DropdownItem
+                  key={mode}
+                  icon={sortMode === mode ? <Check size={14} /> : undefined}
+                  onClick={() => setSortMode(mode)}
+                  className={
+                    sortMode === mode
+                      ? 'bg-pd-primary-50 text-pd-primary-700 hover:!bg-pd-primary-50'
+                      : 'hover:!bg-pd-neutral-50'
+                  }
+                >
+                  {SORT_LABELS[mode]}
+                </DropdownItem>
+              ))}
+            </DropdownPanel>
+          </Dropdown>
+        </div>
       }
     >
       <div className="grid flex-1 grid-cols-1 gap-6 lg:grid-cols-5">
         <ProgressBarList
           className="lg:col-span-3"
-          items={PROVINCE_PROGRESS.map((r) => ({ label: r.name, value: r.progress }))}
+          items={sortedProvinces.map((r) => ({ label: r.name, value: r.progress }))}
+          highlightLabel={selectedProvince}
         />
         <RankedRegionList
-          title="Top Kabupaten/Kota"
+          title="Kabupaten/Kota Teratas"
           className="lg:col-span-2 lg:border-l lg:border-border-subtle lg:pl-6"
           items={TOP_REGENCIES.map((r) => ({ rank: r.rank, name: r.name, value: r.progress }))}
         />
       </div>
 
-      <Button variant="outline" size="sm" className="mt-5 self-end">
-        Lihat Selengkapnya
+      <Button
+        variant="outline"
+        size="sm"
+        className="mt-5 self-end"
+        iconRight={<ArrowRight size={14} aria-hidden="true" />}
+      >
+        Lihat Peringkat Lengkap
       </Button>
     </ChartPanel>
   );

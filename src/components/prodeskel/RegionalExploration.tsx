@@ -1,15 +1,27 @@
+'use client';
+
+import { useState } from 'react';
 import { Section } from '@/components/layout/Section';
 import { TwoColumnLayout } from '@/components/layout/TwoColumnLayout';
 import { RegionalMapPanel } from './RegionalMapPanel';
 import { ProgressSummary } from './ProgressSummary';
 
 export function RegionalExploration() {
+  const [selectedProvince, setSelectedProvince] = useState<string | null>(null);
+
   return (
-    // `flush-top`: the gap up to NationalOverview's stat cards should come
-    // entirely from that section's own bottom padding (compact, ~28px) so the
-    // two read as one continuous run rather than two separated blocks.
-    <Section tone="subtle" padding="flush-top" id="progres">
-      <TwoColumnLayout ratio="44:56" gap="16px" left={<RegionalMapPanel />} right={<ProgressSummary />} />
+    // Border-top transition is already covered by NationalOverview's own
+    // border-b right above — adding another here would double the line.
+    <Section tone="subtle-blue" padding="loose-40" id="progres">
+      <TwoColumnLayout
+        ratio="44:56"
+        gap="16px"
+        left={<RegionalMapPanel selectedProvince={selectedProvince} onSelectProvince={setSelectedProvince} />}
+        right={<ProgressSummary selectedProvince={selectedProvince} />}
+      />
+      <p className="mt-4 text-xs text-ink">
+        Data yang ditampilkan merupakan data simulasi untuk kebutuhan mockup.
+      </p>
     </Section>
   );
 }
