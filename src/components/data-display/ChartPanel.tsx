@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Card, Heading, Text } from '@/ui';
+import { Card, Heading, Text, type HeadingLevel } from '@/ui';
 
 export interface ChartPanelProps {
   title: ReactNode;
@@ -7,6 +7,8 @@ export interface ChartPanelProps {
   action?: ReactNode;
   children?: ReactNode;
   className?: string;
+  /** Defaults to "4" (24px) — override per-instance without resizing every other consumer. */
+  headingLevel?: HeadingLevel;
 }
 
 /**
@@ -19,17 +21,17 @@ export interface ChartPanelProps {
  * padding, which is 16/20px) to hit the ~20-24px panel padding the compact
  * portal spacing calls for.
  */
-export function ChartPanel({ title, description, action, children, className }: ChartPanelProps) {
+export function ChartPanel({ title, description, action, children, className, headingLevel = '4' }: ChartPanelProps) {
   return (
     <Card flush className={`flex h-full flex-col ${className ?? ''}`.trim()}>
       <div className="flex h-full flex-col p-5">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <Heading level="4" as="h3">
+            <Heading level={headingLevel} as="h3">
               {title}
             </Heading>
             {description ? (
-              <Text variant="muted" size="sm" className="mt-1">
+              <Text variant="muted" size="sm" className="mt-1 !text-[13px]">
                 {description}
               </Text>
             ) : null}

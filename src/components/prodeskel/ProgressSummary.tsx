@@ -32,12 +32,13 @@ export function ProgressSummary({ selectedProvince }: ProgressSummaryProps) {
   return (
     <ChartPanel
       className="!h-auto"
+      headingLevel="5"
       title="Ringkasan Progres Nasional"
       description="Perbandingan capaian pendataan desa dan kelurahan berdasarkan provinsi."
       action={
         <div className="flex items-center gap-2">
-          <span className="hidden rounded-md border border-border-subtle px-2.5 py-1.5 text-xs font-medium text-ink sm:inline-block">
-            Tahun 2026
+          <span className="hidden !h-9 items-center rounded-md border border-border-subtle px-2.5 text-xs font-medium text-ink sm:inline-flex">
+            2026
           </span>
           <Dropdown placement="bottom-end">
             <DropdownTrigger>
@@ -45,7 +46,7 @@ export function ProgressSummary({ selectedProvince }: ProgressSummaryProps) {
                 variant="outline"
                 size="sm"
                 iconRight={<Icon icon={ChevronDown} size="xs" aria-hidden="true" />}
-                className="focus-visible:!outline-pd-primary-300"
+                className="!h-9 focus-visible:!outline-pd-primary-300"
               >
                 {SORT_LABELS[sortMode]}
               </Button>
@@ -80,7 +81,7 @@ export function ProgressSummary({ selectedProvince }: ProgressSummaryProps) {
             title="Kabupaten/Kota Teratas"
             items={TOP_REGENCIES.map((r) => ({ rank: r.rank, name: r.name, value: r.progress }))}
           />
-          <Button variant="outline" size="sm" fullWidth className="mt-4" iconRight={<ArrowRight size={14} aria-hidden="true" />}>
+          <Button variant="outline" size="sm" fullWidth className="mt-3" iconRight={<ArrowRight size={14} aria-hidden="true" />}>
             Lihat Peringkat Lengkap
           </Button>
         </div>
