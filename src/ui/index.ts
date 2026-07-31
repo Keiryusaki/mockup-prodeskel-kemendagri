@@ -90,3 +90,6 @@ export {
 export type { IconProps } from '@bynara-id/icons';
 
 export { IconButton } from './IconButton';
+
+export { useLang } from '@bynara-id/hooks';
+export type { Lang } from '@bynara-id/hooks';

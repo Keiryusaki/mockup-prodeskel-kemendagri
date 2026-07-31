@@ -1,6 +1,7 @@
 'use client';
 
-import { LogIn } from 'lucide-react';
+import { useState } from 'react';
+import { LogIn, ChevronDown } from 'lucide-react';
 import { Button, Input, Icon, Search, Divider, type TopbarNavItem } from '@/ui';
 
 export interface MobileNavigationDrawerProps {
@@ -10,6 +11,8 @@ export interface MobileNavigationDrawerProps {
 }
 
 export function MobileNavigationDrawer({ open, onClose, items }: MobileNavigationDrawerProps) {
+  const [expanded, setExpanded] = useState<string | null>(null);
+
   if (!open) return null;
 
   return (
@@ -32,34 +35,53 @@ export function MobileNavigationDrawer({ open, onClose, items }: MobileNavigatio
           className="mb-4"
         />
         <ul className="flex flex-col">
-          {items.map((item) => (
-            <li key={item.label}>
-              <a
-                href={item.href}
-                onClick={onClose}
-                className={`block rounded-md px-3 py-2.5 text-sm font-medium ${
-                  item.active ? 'bg-primary/10 text-primary' : 'text-text-main hover:bg-subtle'
-                }`}
-              >
-                {item.label}
-              </a>
-              {item.children ? (
-                <ul className="ml-3 flex flex-col border-l border-border-subtle pl-3">
-                  {item.children.map((child) => (
-                    <li key={child.label}>
-                      <a
-                        href={child.href}
-                        onClick={onClose}
-                        className="block rounded-md px-3 py-2 text-sm text-ink hover:bg-subtle"
-                      >
-                        {child.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-            </li>
-          ))}
+          {items.map((item) => {
+            const isExpanded = expanded === item.label;
+            return (
+              <li key={item.label}>
+                {item.children ? (
+                  <button
+                    type="button"
+                    onClick={() => setExpanded(isExpanded ? null : item.label)}
+                    aria-expanded={isExpanded}
+                    className="flex w-full items-center justify-between rounded-md px-3 py-2.5 text-sm font-medium text-text-main hover:bg-subtle"
+                  >
+                    {item.label}
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform duration-150 ${isExpanded ? 'rotate-180' : ''}`}
+                      aria-hidden="true"
+                    />
+                  </button>
+                ) : (
+                  <a
+                    href={item.href}
+                    onClick={onClose}
+                    className={`block rounded-md px-3 py-2.5 text-sm font-medium ${
+                      item.active ? 'bg-primary/10 text-primary' : 'text-text-main hover:bg-subtle'
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                )}
+                {item.children && isExpanded ? (
+                  <ul className="ml-3 flex flex-col border-l border-border-subtle pl-3">
+                    {item.children.map((child) => (
+                      <li key={child.label}>
+                        <a
+                          href={child.href}
+                          onClick={onClose}
+                          className="block rounded-md px-3 py-2 text-sm text-ink hover:bg-subtle"
+                        >
+                          {child.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+              </li>
+            );
+          })}
         </ul>
         <Divider className="my-4" />
         <Button iconLeft={<LogIn size={16} aria-hidden="true" />} fullWidth>
