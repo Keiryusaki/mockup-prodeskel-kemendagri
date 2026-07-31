@@ -7,6 +7,8 @@ export interface TwoColumnLayoutProps {
   ratio?: '1:1' | '3:2' | '2:3' | '44:56';
   /** Gap between columns — defaults to 24px. */
   gap?: '16px' | '24px';
+  /** `stretch` (default) makes both columns match height; `start` lets each size to its own content. */
+  align?: 'stretch' | 'start';
   className?: string;
 }
 
@@ -22,9 +24,14 @@ const GAP_CLASS: Record<NonNullable<TwoColumnLayoutProps['gap']>, string> = {
   '24px': 'gap-6',
 };
 
-export function TwoColumnLayout({ left, right, ratio = '1:1', gap = '24px', className }: TwoColumnLayoutProps) {
+const ALIGN_CLASS: Record<NonNullable<TwoColumnLayoutProps['align']>, string> = {
+  stretch: 'items-stretch',
+  start: 'items-start',
+};
+
+export function TwoColumnLayout({ left, right, ratio = '1:1', gap = '24px', align = 'stretch', className }: TwoColumnLayoutProps) {
   return (
-    <div className={`grid grid-cols-1 ${GAP_CLASS[gap]} ${RATIO_CLASS[ratio]} ${className ?? ''}`.trim()}>
+    <div className={`grid grid-cols-1 ${GAP_CLASS[gap]} ${RATIO_CLASS[ratio]} ${ALIGN_CLASS[align]} ${className ?? ''}`.trim()}>
       {left}
       {right}
     </div>

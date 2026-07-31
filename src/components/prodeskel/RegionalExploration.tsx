@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Info } from 'lucide-react';
 import { Section } from '@/components/layout/Section';
 import { TwoColumnLayout } from '@/components/layout/TwoColumnLayout';
 import { RegionalMapPanel } from './RegionalMapPanel';
@@ -16,12 +17,16 @@ export function RegionalExploration() {
       <TwoColumnLayout
         ratio="44:56"
         gap="16px"
+        align="start"
         left={<RegionalMapPanel selectedProvince={selectedProvince} onSelectProvince={setSelectedProvince} />}
         right={<ProgressSummary selectedProvince={selectedProvince} />}
       />
-      <p className="mt-4 text-xs text-ink">
-        Data yang ditampilkan merupakan data simulasi untuk kebutuhan mockup.
-      </p>
+      <div className="mt-3 flex justify-end">
+        <p className="inline-flex items-center gap-1 text-xs text-ink">
+          <Info size={12} aria-hidden="true" />
+          Data simulasi untuk kebutuhan visualisasi konsep.
+        </p>
+      </div>
     </Section>
   );
 }

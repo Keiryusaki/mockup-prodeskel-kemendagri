@@ -31,6 +31,7 @@ export function ProgressSummary({ selectedProvince }: ProgressSummaryProps) {
 
   return (
     <ChartPanel
+      className="!h-auto"
       title="Ringkasan Progres Nasional"
       description="Perbandingan capaian pendataan desa dan kelurahan berdasarkan provinsi."
       action={
@@ -69,27 +70,21 @@ export function ProgressSummary({ selectedProvince }: ProgressSummaryProps) {
         </div>
       }
     >
-      <div className="grid flex-1 grid-cols-1 gap-6 lg:grid-cols-5">
+      <div className="grid grid-cols-1 items-start gap-5 lg:grid-cols-[minmax(0,1fr)_250px]">
         <ProgressBarList
-          className="lg:col-span-3"
           items={sortedProvinces.map((r) => ({ label: r.name, value: r.progress }))}
           highlightLabel={selectedProvince}
         />
-        <RankedRegionList
-          title="Kabupaten/Kota Teratas"
-          className="lg:col-span-2 lg:border-l lg:border-border-subtle lg:pl-6"
-          items={TOP_REGENCIES.map((r) => ({ rank: r.rank, name: r.name, value: r.progress }))}
-        />
+        <div className="lg:border-l lg:border-border-subtle lg:pl-5">
+          <RankedRegionList
+            title="Kabupaten/Kota Teratas"
+            items={TOP_REGENCIES.map((r) => ({ rank: r.rank, name: r.name, value: r.progress }))}
+          />
+          <Button variant="outline" size="sm" fullWidth className="mt-4" iconRight={<ArrowRight size={14} aria-hidden="true" />}>
+            Lihat Peringkat Lengkap
+          </Button>
+        </div>
       </div>
-
-      <Button
-        variant="outline"
-        size="sm"
-        className="mt-5 self-end"
-        iconRight={<ArrowRight size={14} aria-hidden="true" />}
-      >
-        Lihat Peringkat Lengkap
-      </Button>
     </ChartPanel>
   );
 }
