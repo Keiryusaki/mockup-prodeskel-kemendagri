@@ -6,6 +6,12 @@ export interface SectionProps extends HTMLAttributes<HTMLElement> {
   /** Skip the built-in PageContainer, e.g. for full-bleed backgrounds that contain their own container. */
   bare?: boolean;
   tone?: 'page' | 'surface' | 'subtle';
+  /**
+   * Vertical rhythm — `default` for standalone sections, `compact`/`flush-top`
+   * for sections meant to read as one continuous run (e.g. overview + data
+   * exploration) rather than separated SaaS-style blocks.
+   */
+  padding?: 'default' | 'compact' | 'flush-top';
 }
 
 const TONE_CLASS: Record<NonNullable<SectionProps['tone']>, string> = {
@@ -14,9 +20,15 @@ const TONE_CLASS: Record<NonNullable<SectionProps['tone']>, string> = {
   subtle: 'bg-subtle',
 };
 
-export function Section({ children, className, bare, tone = 'page', ...rest }: SectionProps) {
+const PADDING_CLASS: Record<NonNullable<SectionProps['padding']>, string> = {
+  default: 'py-12 md:py-16',
+  compact: 'pt-6 pb-7',
+  'flush-top': 'pt-0 pb-10',
+};
+
+export function Section({ children, className, bare, tone = 'page', padding = 'default', ...rest }: SectionProps) {
   return (
-    <section className={`py-12 md:py-16 ${TONE_CLASS[tone]} ${className ?? ''}`.trim()} {...rest}>
+    <section className={`${PADDING_CLASS[padding]} ${TONE_CLASS[tone]} ${className ?? ''}`.trim()} {...rest}>
       {bare ? children : <PageContainer>{children}</PageContainer>}
     </section>
   );

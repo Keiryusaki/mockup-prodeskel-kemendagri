@@ -11,13 +11,8 @@ const STATS = [
 
 export function NationalOverview() {
   return (
-    <Section tone="page" className="border-b border-border-subtle">
-      <div className="mb-4 flex justify-end">
-        <Text variant="muted" size="sm">
-          Diperbarui 31 Juli 2026
-        </Text>
-      </div>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <Section tone="page" padding="compact" className="border-b border-border-subtle">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,1fr))_170px] lg:items-center">
         {STATS.map((stat) => (
           <StatCard
             key={stat.label}
@@ -28,6 +23,14 @@ export function NationalOverview() {
             icon={<stat.icon size={20} aria-hidden="true" />}
           />
         ))}
+        <Text variant="muted" size="sm" className="hidden lg:block lg:text-right">
+          Diperbarui 31 Juli 2026
+        </Text>
+      </div>
+      <div className="mt-3 flex justify-end lg:hidden">
+        <Text variant="muted" size="sm">
+          Diperbarui 31 Juli 2026
+        </Text>
       </div>
     </Section>
   );
