@@ -1,0 +1,58 @@
+/**
+ * Prodeskel color tokens.
+ * Values are stored as "R G B" triplets (no rgb() wrapper) so they can be
+ * consumed both by our own Tailwind config via rgb(var(--x) / <alpha-value>)
+ * and by the Nara DS token contract, which expects the same triplet format.
+ */
+:root {
+  /* Primary — deep government blue */
+  --pd-primary-50: 238 245 255; /* #eef5ff */
+  --pd-primary-100: 217 233 255; /* #d9e9ff */
+  --pd-primary-200: 188 215 255; /* #bcd7ff */
+  --pd-primary-300: 142 188 255; /* #8ebcff */
+  --pd-primary-400: 87 150 245; /* #5796f5 */
+  --pd-primary-500: 47 115 219; /* #2f73db */
+  --pd-primary-600: 22 89 187; /* #1659bb */
+  --pd-primary-700: 17 71 145; /* #114791 */
+  --pd-primary-800: 18 61 118; /* #123d76 */
+  --pd-primary-900: 16 47 88; /* #102f58 */
+  --pd-primary-950: 8 28 55; /* #081c37 */
+
+  /* Secondary — cyan accent for progress/data visuals */
+  --pd-secondary-50: 236 254 255; /* #ecfeff */
+  --pd-secondary-100: 207 250 254; /* #cffafe */
+  --pd-secondary-200: 165 243 252; /* #a5f3fc */
+  --pd-secondary-300: 103 232 249; /* #67e8f9 */
+  --pd-secondary-400: 34 211 238; /* #22d3ee */
+  --pd-secondary-500: 6 182 212; /* #06b6d4 */
+  --pd-secondary-600: 8 145 178; /* #0891b2 */
+  --pd-secondary-700: 14 116 144; /* #0e7490 */
+  --pd-secondary-800: 21 94 117; /* #155e75 */
+  --pd-secondary-900: 22 78 99; /* #164e63 */
+
+  /* Accent — amber for highlights, badges, warnings */
+  --pd-accent-50: 255 251 235; /* #fffbeb */
+  --pd-accent-100: 254 243 199; /* #fef3c7 */
+  --pd-accent-200: 253 230 138; /* #fde68a */
+  --pd-accent-300: 252 211 77; /* #fcd34d */
+  --pd-accent-400: 251 191 36; /* #fbbf24 */
+  --pd-accent-500: 245 158 11; /* #f59e0b */
+  --pd-accent-600: 217 119 6; /* #d97706 */
+  --pd-accent-700: 180 83 9; /* #b45309 */
+
+  /* Neutral */
+  --pd-neutral-0: 255 255 255; /* #ffffff */
+  --pd-neutral-50: 248 250 252; /* #f8fafc */
+  --pd-neutral-100: 241 245 249; /* #f1f5f9 */
+  --pd-neutral-200: 226 232 240; /* #e2e8f0 */
+  --pd-neutral-300: 203 213 225; /* #cbd5e1 */
+  --pd-neutral-500: 100 116 139; /* #64748b */
+  --pd-neutral-700: 51 65 85; /* #334155 */
+  --pd-neutral-900: 15 23 42; /* #0f172a */
+
+  /* Status */
+  --pd-success: 22 163 74; /* #16a34a */
+  --pd-warning: 217 119 6; /* #d97706 */
+  --pd-error: 220 38 38; /* #dc2626 */
+  --pd-info: 2 132 199; /* #0284c7 */
+}

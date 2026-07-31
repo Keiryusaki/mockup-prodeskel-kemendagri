@@ -1,0 +1,32 @@
+:root {
+  --font-sans: 'Geist', 'Inter', 'Public Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --pd-text-display-size: 3rem; /* 48px */
+  --pd-text-display-line: 3.5rem; /* 56px */
+  --pd-text-display-weight: 700;
+
+  --pd-text-h1-size: 2.5rem; /* 40px */
+  --pd-text-h1-line: 3rem; /* 48px */
+  --pd-text-h1-weight: 700;
+
+  --pd-text-h2-size: 1.875rem; /* 30px */
+  --pd-text-h2-line: 2.375rem; /* 38px */
+  --pd-text-h2-weight: 700;
+
+  --pd-text-h3-size: 1.375rem; /* 22px */
+  --pd-text-h3-line: 1.875rem; /* 30px */
+  --pd-text-h3-weight: 650;
+
+  --pd-text-body-lg-size: 1.125rem; /* 18px */
+  --pd-text-body-lg-line: 1.75rem; /* 28px */
+
+  --pd-text-body-size: 1rem; /* 16px */
+  --pd-text-body-line: 1.5rem; /* 24px */
+
+  --pd-text-body-sm-size: 0.875rem; /* 14px */
+  --pd-text-body-sm-line: 1.25rem; /* 20px */
+
+  --pd-text-caption-size: 0.75rem; /* 12px */
+  --pd-text-caption-line: 1.125rem; /* 18px */
+  --pd-text-caption-weight: 500;
+}

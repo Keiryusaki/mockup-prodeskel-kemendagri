@@ -1,0 +1,33 @@
+@import '../tokens/color.css';
+@import '../tokens/semantic.css';
+@import '../tokens/typography.css';
+@import '../tokens/spacing.css';
+
+/**
+ * Bridge to the real Nara DS token contract (@bynara-id/tokens/css).
+ * Nara primitives (Button, Card, Badge, StatCard, ProgressBar, ...) read
+ * --color-primary, --bg-app, --text-main, etc. Re-pointing those at our
+ * Prodeskel tokens keeps every primitive on-brand without touching Nara
+ * internals. Values not listed here (secondary/accent/-content pairs)
+ * already match our palette by coincidence and are left untouched.
+ */
+:root {
+  --color-primary: var(--pd-action-primary);
+  --color-primary-hover: var(--pd-action-primary-hover);
+  --color-primary-active: var(--pd-primary-800);
+  --color-primary-disabled: var(--pd-neutral-300);
+  --ring-focus: var(--pd-focus-ring);
+
+  --color-info: var(--pd-info);
+  --color-success: var(--pd-success);
+  --color-warning: var(--pd-warning);
+  --color-error: var(--pd-error);
+
+  --bg-app: var(--pd-bg-page);
+  --bg-surface: var(--pd-bg-surface);
+  --bg-muted: var(--pd-bg-subtle);
+  --border-subtle: var(--pd-border);
+
+  --text-main: var(--pd-text-primary);
+  --text-muted: var(--pd-text-muted);
+}

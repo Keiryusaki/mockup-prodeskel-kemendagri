@@ -1,0 +1,20 @@
+/**
+ * Spacing scale: 4px base, aligned 1:1 with Tailwind's default scale
+ * (1=4px, 2=8px, 3=12px, 4=16px, 5=20px, 6=24px, 8=32px, 10=40px, 12=48px,
+ *  16=64px, 20=80px, 24=96px). Prefer Tailwind spacing utilities (p-4, gap-6, ...)
+ * over these vars; use the vars only for non-Tailwind CSS (e.g. inline SVG).
+ */
+:root {
+  --pd-space-1: 4px;
+  --pd-space-2: 8px;
+  --pd-space-3: 12px;
+  --pd-space-4: 16px;
+  --pd-space-5: 20px;
+  --pd-space-6: 24px;
+  --pd-space-8: 32px;
+  --pd-space-10: 40px;
+  --pd-space-12: 48px;
+  --pd-space-16: 64px;
+  --pd-space-20: 80px;
+  --pd-space-24: 96px;
+}

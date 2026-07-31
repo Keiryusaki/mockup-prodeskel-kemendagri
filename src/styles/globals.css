@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-app text-text-main antialiased;
+    font-family: var(--font-sans);
+  }
+}
