@@ -7,7 +7,7 @@ export interface ChartPanelProps {
   action?: ReactNode;
   children?: ReactNode;
   className?: string;
-  /** Defaults to "4" (24px) — override per-instance without resizing every other consumer. */
+  /** Defaults to "5" (20px), the standard card-title size across the site. */
   headingLevel?: HeadingLevel;
 }
 
@@ -21,7 +21,7 @@ export interface ChartPanelProps {
  * padding, which is 16/20px) to hit the ~20-24px panel padding the compact
  * portal spacing calls for.
  */
-export function ChartPanel({ title, description, action, children, className, headingLevel = '4' }: ChartPanelProps) {
+export function ChartPanel({ title, description, action, children, className, headingLevel = '5' }: ChartPanelProps) {
   return (
     <Card flush className={`flex h-full flex-col ${className ?? ''}`.trim()}>
       <div className="flex h-full flex-col p-5">

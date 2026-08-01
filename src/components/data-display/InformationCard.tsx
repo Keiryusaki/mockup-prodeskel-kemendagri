@@ -13,7 +13,7 @@ export function InformationCard({ icon: IconComp, title, items, href = '#' }: In
     <Card className="flex h-full flex-col">
       <div className="flex items-center gap-2.5">
         <IconComp size={18} className="shrink-0 text-primary" aria-hidden="true" />
-        <Heading level="4" as="h3">
+        <Heading level="5" as="h3">
           {title}
         </Heading>
       </div>

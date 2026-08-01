@@ -32,7 +32,6 @@ export function ProgressSummary({ selectedProvince }: ProgressSummaryProps) {
   return (
     <ChartPanel
       className="!h-auto"
-      headingLevel="5"
       title="Ringkasan Progres Nasional"
       description="Perbandingan capaian pendataan desa dan kelurahan berdasarkan provinsi."
       action={

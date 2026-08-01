@@ -15,7 +15,7 @@ export function DataCategoryCard({ icon: IconComp, title, description, href = '#
       <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary/10 text-primary">
         <IconComp size={22} aria-hidden="true" />
       </span>
-      <Heading level="4" as="h3" className="mt-4">
+      <Heading level="5" as="h3" className="mt-4">
         {title}
       </Heading>
       <Text variant="muted" size="sm" className="mt-1.5 flex-1">
