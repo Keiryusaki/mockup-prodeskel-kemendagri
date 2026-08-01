@@ -18,6 +18,8 @@ export interface IndonesiaProvincesMapProps {
   highlightQuery?: string;
   selectedProvince?: string | null;
   onSelectProvince?: (name: string | null) => void;
+  /** CSS scale applied to the map — 1 = fit, >1 zooms in around the center. */
+  zoom?: number;
 }
 
 export function IndonesiaProvincesMap({
@@ -25,6 +27,7 @@ export function IndonesiaProvincesMap({
   highlightQuery,
   selectedProvince,
   onSelectProvince,
+  zoom = 1,
 }: IndonesiaProvincesMapProps) {
   const [hovered, setHovered] = useState<MapTooltipData | null>(null);
   const q = highlightQuery?.trim().toLowerCase();
@@ -34,6 +37,7 @@ export function IndonesiaProvincesMap({
       <svg
         viewBox={PROVINCES_VIEWBOX}
         className={className}
+        style={{ transform: `scale(${zoom})`, transformOrigin: '50% 50%', transition: 'transform 150ms ease' }}
         role="img"
         aria-label="Peta interaktif progres pendataan per provinsi (batas wilayah disederhanakan)"
         onClick={() => onSelectProvince?.(null)}
