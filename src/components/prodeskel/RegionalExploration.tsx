@@ -17,7 +17,6 @@ export function RegionalExploration() {
       <TwoColumnLayout
         ratio="44:56"
         gap="16px"
-        align="start"
         left={<RegionalMapPanel selectedProvince={selectedProvince} onSelectProvince={setSelectedProvince} />}
         right={<ProgressSummary selectedProvince={selectedProvince} />}
       />

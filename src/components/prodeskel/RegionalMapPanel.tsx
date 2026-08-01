@@ -68,7 +68,6 @@ export function RegionalMapPanel({ selectedProvince, onSelectProvince }: Regiona
 
   return (
     <ChartPanel
-      className="!h-auto"
       title="Jelajahi Data Wilayah"
       description="Pilih wilayah pada peta atau cari nama daerah untuk melihat profil dan progres pendataannya."
     >
