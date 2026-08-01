@@ -5,7 +5,7 @@ import { HelpCenterCard } from '@/components/data-display/HelpCenterCard';
 
 export function InformationAndHelp() {
   return (
-    <Section tone="page" id="informasi">
+    <Section tone="page" padding="compact" id="informasi">
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <InformationCard
           icon={Megaphone}

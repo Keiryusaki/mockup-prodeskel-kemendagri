@@ -13,7 +13,7 @@ export function RegionalExploration() {
   return (
     // Border-top transition is already covered by NationalOverview's own
     // border-b right above — adding another here would double the line.
-    <Section tone="subtle-blue" padding="loose-40" id="progres">
+    <Section tone="subtle-blue" padding="compact" id="progres">
       <TwoColumnLayout
         ratio="44:56"
         gap="16px"
