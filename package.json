@@ -14,6 +14,7 @@
     "@bynara-id/tailwind-preset": "^1.0.0",
     "@bynara-id/tokens": "^1.0.0",
     "@bynara-id/ui": "^1.0.0",
+    "@floating-ui/dom": "^1.8.0",
     "next": "^15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
