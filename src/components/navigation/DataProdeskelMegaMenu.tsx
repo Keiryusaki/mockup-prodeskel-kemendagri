@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { DATA_CATEGORIES } from '@/components/prodeskel/data-categories';
+import { withBasePath } from '@/lib/base-path';
 
 const OPEN_DELAY = 120;
 const CLOSE_DELAY = 180;
@@ -85,7 +86,7 @@ export function DataProdeskelMegaMenu({ active = false }: { active?: boolean }) 
                 </p>
               </div>
               <Link
-                href="/data-prodeskel/kependudukan"
+                href={withBasePath('/data-prodeskel/kependudukan')}
                 onClick={() => setOpen(false)}
                 className="mt-6 inline-flex h-8 self-start items-center gap-1.5 rounded-md bg-primary px-3 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pd-secondary-400"
               >
@@ -98,7 +99,7 @@ export function DataProdeskelMegaMenu({ active = false }: { active?: boolean }) 
               {DATA_CATEGORIES.map((cat) => (
                 <a
                   key={cat.title}
-                  href={cat.href ?? '/#data-utama'}
+                  href={withBasePath(cat.href ?? '/#data-utama')}
                   role="menuitem"
                   onClick={() => setOpen(false)}
                   className="group flex items-start gap-3 rounded-lg p-3 transition-colors hover:bg-pd-primary-50"

@@ -142,7 +142,7 @@ export function RedesignProposal() {
   return (
     <main ref={rootRef} className="fixed inset-0 z-[100] flex min-h-[620px] flex-col overflow-hidden bg-pd-primary-950 text-text-main">
       <header className="relative z-30 flex h-[68px] shrink-0 items-center border-b border-border-subtle bg-white/95 px-4 shadow-sm backdrop-blur-md md:px-7">
-        <Link href="/" aria-label="Kembali ke Beranda" className="rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pd-secondary-400">
+        <Link href={withBasePath('/')} aria-label="Kembali ke Beranda" className="rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pd-secondary-400">
           <ProdeskelMark className="scale-90 origin-left md:scale-100" />
         </Link>
         <div className="mx-5 hidden h-8 w-px bg-border-subtle sm:block" />
@@ -152,7 +152,7 @@ export function RedesignProposal() {
         </div>
         <div className="ml-auto flex items-center gap-2">
           <img src={withBasePath('/proposal/mitreka-horizontal.svg')} alt="Mitreka" className="mr-2 hidden h-6 w-auto xl:block" />
-          <Link href="/" className="inline-flex h-9 items-center gap-1.5 rounded-md border border-border-subtle bg-white px-3 text-xs font-semibold text-ink hover:bg-subtle" title="Kembali ke Beranda">
+          <Link href={withBasePath('/')} className="inline-flex h-9 items-center gap-1.5 rounded-md border border-border-subtle bg-white px-3 text-xs font-semibold text-ink hover:bg-subtle" title="Kembali ke Beranda">
             <Home size={15} aria-hidden="true" /><span className="hidden md:inline">Beranda</span>
           </Link>
           <button type="button" onClick={() => setPlaying((value) => !value)} className="inline-flex h-9 items-center gap-1.5 rounded-md border border-border-subtle bg-white px-3 text-xs font-semibold text-ink hover:bg-subtle" aria-label={playing ? 'Jeda autoplay' : 'Mulai autoplay'}>

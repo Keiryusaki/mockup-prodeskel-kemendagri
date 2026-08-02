@@ -4,6 +4,7 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 import { Info } from 'lucide-react';
 import { Breadcrumb, Card, Skeleton, ToastProvider, useToast } from '@/ui';
 import { PageContainer } from '@/components/layout/PageContainer';
+import { withBasePath } from '@/lib/base-path';
 import { ActiveFilterChips } from './ActiveFilterChips';
 import { AdministrativeFilter } from './AdministrativeFilter';
 import { DataPageHeader } from './DataPageHeader';
@@ -170,8 +171,8 @@ function PopulationDataExplorerContent() {
       <PageContainer className="min-w-0 max-w-full">
         <div className="pt-5">
           <Breadcrumb items={[
-            { label: 'Beranda', href: '/' },
-            { label: 'Data Prodeskel', href: '/#data-utama' },
+            { label: 'Beranda', href: withBasePath('/#beranda') },
+            { label: 'Data Prodeskel', href: withBasePath('/#data-utama') },
             { label: 'Kependudukan' },
           ]} />
         </div>

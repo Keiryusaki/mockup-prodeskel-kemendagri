@@ -1,6 +1,7 @@
 import { MapPin, Phone, Mail, Youtube, Instagram, Facebook, Twitter } from 'lucide-react';
 import { Footer, Icon } from '@/ui';
 import { ProdeskelMark } from '@/components/navigation/ProdeskelMark';
+import { withBasePath } from '@/lib/base-path';
 
 const QUICK_LINKS = [
   { label: 'Tentang Prodeskel', href: '#' },
@@ -69,7 +70,7 @@ export function GovernmentFooter() {
             {QUICK_LINKS.map((link) => (
               <li key={link.label}>
                 <a
-                  href={link.href}
+                  href={link.href.startsWith('/') ? withBasePath(link.href) : link.href}
                   className="rounded-sm text-sm text-white/70 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pd-secondary-400"
                 >
                   {link.label}

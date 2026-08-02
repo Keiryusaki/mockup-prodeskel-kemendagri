@@ -1,6 +1,7 @@
 import type { LucideIcon } from 'lucide-react';
 import { ArrowRight } from 'lucide-react';
 import { Card, Text, Heading } from '@/ui';
+import { withBasePath } from '@/lib/base-path';
 
 export type DataCategoryTone = 'primary' | 'secondary' | 'accent' | 'info' | 'success' | 'warning';
 
@@ -30,7 +31,7 @@ export function DataCategoryCard({
 }: DataCategoryCardProps) {
   return (
     <a
-      href={href}
+      href={withBasePath(href)}
       className="group block h-full rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pd-secondary-400"
       aria-label={`Lihat ${title}`}
     >

@@ -1,22 +1,23 @@
 import type { TopbarNavItem } from '@/ui';
+import { withBasePath } from '@/lib/base-path';
 
 export const NAV_ITEMS: TopbarNavItem[] = [
-  { label: 'Beranda', href: '/#beranda' },
+  { label: 'Beranda', href: withBasePath('/#beranda') },
   {
     label: 'Data Prodeskel',
-    href: '/#data-utama',
+    href: withBasePath('/#data-utama'),
     children: [
-      { label: 'Data Dasar Keluarga', href: '/#data-utama' },
-      { label: 'Potensi Desa/Kelurahan', href: '/#data-utama' },
-      { label: 'Tingkat Perkembangan', href: '/#data-utama' },
-      { label: 'Kependudukan', href: '/data-prodeskel/kependudukan' },
-      { label: 'Ekonomi & BUMDes', href: '/#data-utama' },
-      { label: 'Sarana & Prasarana', href: '/#data-utama' },
+      { label: 'Data Dasar Keluarga', href: withBasePath('/#data-utama') },
+      { label: 'Potensi Desa/Kelurahan', href: withBasePath('/#data-utama') },
+      { label: 'Tingkat Perkembangan', href: withBasePath('/#data-utama') },
+      { label: 'Kependudukan', href: withBasePath('/data-prodeskel/kependudukan') },
+      { label: 'Ekonomi & BUMDes', href: withBasePath('/#data-utama') },
+      { label: 'Sarana & Prasarana', href: withBasePath('/#data-utama') },
     ],
   },
-  { label: 'Progres', href: '/#progres' },
-  { label: 'Klasifikasi', href: '/#klasifikasi' },
-  { label: 'Publikasi', href: '/#informasi' },
-  { label: 'Galeri', href: '/#galeri' },
-  { label: 'Panduan', href: '/#informasi' },
+  { label: 'Progres', href: withBasePath('/#progres') },
+  { label: 'Klasifikasi', href: withBasePath('/#klasifikasi') },
+  { label: 'Publikasi', href: withBasePath('/#informasi') },
+  { label: 'Galeri', href: withBasePath('/#galeri') },
+  { label: 'Panduan', href: withBasePath('/#informasi') },
 ];
