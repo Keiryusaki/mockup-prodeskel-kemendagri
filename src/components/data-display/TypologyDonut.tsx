@@ -11,16 +11,23 @@ export interface TypologyDonutProps {
   total: string;
   size?: number;
   strokeWidth?: number;
+  responsiveHorizontal?: boolean;
 }
 
 /** Multi-segment donut built from stacked stroke-dasharray circles — no radial chart primitive in Nara. */
-export function TypologyDonut({ segments, total, size = 96, strokeWidth = 14 }: TypologyDonutProps) {
+export function TypologyDonut({
+  segments,
+  total,
+  size = 96,
+  strokeWidth = 14,
+  responsiveHorizontal = false,
+}: TypologyDonutProps) {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   let cumulative = 0;
 
   return (
-    <div className="flex flex-col items-center">
+    <div className={`flex items-center ${responsiveHorizontal ? 'flex-col gap-2.5 lg:flex-row' : 'flex-col'}`}>
       <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size }}>
         <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="-rotate-90">
           {segments.map((seg) => {
@@ -48,9 +55,13 @@ export function TypologyDonut({ segments, total, size = 96, strokeWidth = 14 }: 
           <span className="text-[10px] text-ink">Total</span>
         </div>
       </div>
-      <ul className="mt-3 flex w-full flex-col gap-1.5">
+      <ul
+        className={`flex w-full flex-col gap-1 ${
+          responsiveHorizontal ? 'mt-0 lg:min-w-0 lg:flex-1' : 'mt-3'
+        }`}
+      >
         {segments.map((seg) => (
-          <li key={seg.label} className="flex items-center justify-between gap-2 text-xs">
+          <li key={seg.label} className="flex items-center justify-between gap-2 text-[11px]">
             <span className="flex min-w-0 items-center gap-1.5 text-ink">
               <span className="h-2 w-2 shrink-0 rounded-full" style={{ backgroundColor: seg.color }} />
               <span className="truncate">{seg.label}</span>

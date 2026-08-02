@@ -28,7 +28,7 @@
   --pd-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
   --pd-shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
 
-  --pd-container-max: 1280px;
+  --pd-container-max: 1536px;
   --pd-container-padding-desktop: 32px;
   --pd-container-padding-tablet: 24px;
   --pd-container-padding-mobile: 16px;

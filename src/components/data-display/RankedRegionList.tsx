@@ -14,17 +14,17 @@ export function RankedRegionList({ title, items, className }: RankedRegionListPr
   return (
     <div className={className}>
       {title ? <p className="text-sm font-semibold text-text-main">{title}</p> : null}
-      <ol className={`flex flex-col gap-1.5 ${title ? 'mt-3' : ''}`}>
+      <ol className={`overflow-hidden rounded-md border border-border-subtle bg-surface ${title ? 'mt-2' : ''}`}>
         {items.map((item) => (
           <li
             key={item.rank}
-            className="grid h-10 grid-cols-[26px_minmax(0,1fr)_auto] items-center gap-2 rounded-md border border-border-subtle px-2.5"
+            className="grid h-9 grid-cols-[20px_minmax(0,1fr)_auto] items-center gap-2 border-b border-border-subtle px-2.5 last:border-b-0"
           >
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-[11px] font-bold text-primary">
+            <span className="text-center text-xs font-semibold text-primary">
               {item.rank}
             </span>
-            <span className="min-w-0 truncate text-[13px] text-text-main">{item.name}</span>
-            <span className="text-[13px] font-semibold text-text-main">{item.value.toString().replace('.', ',')}%</span>
+            <span className="min-w-0 truncate text-xs text-text-main">{item.name}</span>
+            <span className="text-xs font-semibold text-text-main">{item.value.toString().replace('.', ',')}%</span>
           </li>
         ))}
       </ol>

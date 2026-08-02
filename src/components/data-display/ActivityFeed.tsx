@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Timeline, TimelineItem, Badge, type TimelineTone } from '@/ui';
 
 export interface ActivityFeedItemData {
@@ -7,6 +8,7 @@ export interface ActivityFeedItemData {
   time: string;
   badge?: string;
   tone?: TimelineTone;
+  icon?: ReactNode;
 }
 
 export interface ActivityFeedProps {
@@ -26,6 +28,7 @@ export function ActivityFeed({ items, className }: ActivityFeedProps) {
         <TimelineItem
           key={item.id ?? `${item.actor}-${item.time}`}
           tone={item.tone}
+          icon={item.icon}
           title={
             <span className="flex flex-wrap items-center gap-2">
               <span className="font-semibold text-text-main">{item.actor}</span>

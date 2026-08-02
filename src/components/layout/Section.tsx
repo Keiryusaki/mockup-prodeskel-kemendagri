@@ -24,7 +24,10 @@ const TONE_CLASS: Record<NonNullable<SectionProps['tone']>, string> = {
 
 const PADDING_CLASS: Record<NonNullable<SectionProps['padding']>, string> = {
   default: 'py-12 md:py-16',
-  compact: 'pt-6 pb-7',
+  // Adjacent data sections use the same page canvas. Keeping each side to
+  // 12px creates a 24px rhythm between modules without making them feel like
+  // separate marketing bands.
+  compact: 'py-3',
   'flush-top': 'pt-0 pb-10',
   'loose-40': 'py-10',
 };

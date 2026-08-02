@@ -24,7 +24,7 @@ export interface ChartPanelProps {
 export function ChartPanel({ title, description, action, children, className, headingLevel = '5' }: ChartPanelProps) {
   return (
     <Card flush className={`flex h-full flex-col ${className ?? ''}`.trim()}>
-      <div className="flex h-full flex-col p-5">
+      <div className="flex h-full flex-col p-4">
         <div className="flex items-start justify-between gap-4">
           <div>
             <Heading level={headingLevel} as="h3">
@@ -38,7 +38,7 @@ export function ChartPanel({ title, description, action, children, className, he
           </div>
           {action ? <div className="shrink-0">{action}</div> : null}
         </div>
-        <div className="mt-4 flex flex-1 flex-col">{children}</div>
+        <div className="mt-3 flex flex-1 flex-col">{children}</div>
       </div>
     </Card>
   );

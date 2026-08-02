@@ -12,15 +12,16 @@ const STATS = [
 export function NationalOverview() {
   return (
     <Section tone="page" padding="compact" className="border-b border-border-subtle">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,1fr))_170px] lg:items-center">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,1fr))_170px] lg:items-center">
         {STATS.map((stat) => (
           <StatCard
             key={stat.label}
+            className="prodeskel-stat-card !items-center !gap-4 !px-4 !py-3.5"
             label={stat.label}
             value={stat.value}
             hint={stat.hint}
             tone={stat.tone}
-            icon={<stat.icon size={20} aria-hidden="true" />}
+            icon={<stat.icon size={24} aria-hidden="true" />}
           />
         ))}
         <Text variant="muted" size="sm" className="hidden lg:block lg:text-right">

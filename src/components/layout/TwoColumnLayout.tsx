@@ -4,7 +4,7 @@ export interface TwoColumnLayoutProps {
   left: ReactNode;
   right: ReactNode;
   /** Column split — defaults to an even 1:1 split. */
-  ratio?: '1:1' | '3:2' | '2:3' | '44:56';
+  ratio?: '1:1' | '3:2' | '2:3' | '44:56' | '55:45';
   /** Gap between columns — defaults to 24px. */
   gap?: '16px' | '24px';
   /** `stretch` (default) makes both columns match height; `start` lets each size to its own content. */
@@ -17,6 +17,7 @@ const RATIO_CLASS: Record<NonNullable<TwoColumnLayoutProps['ratio']>, string> = 
   '3:2': 'lg:grid-cols-5 [&>:first-child]:lg:col-span-3 [&>:last-child]:lg:col-span-2',
   '2:3': 'lg:grid-cols-5 [&>:first-child]:lg:col-span-2 [&>:last-child]:lg:col-span-3',
   '44:56': 'lg:grid-cols-[44%_56%]',
+  '55:45': 'lg:grid-cols-[minmax(0,1.22fr)_minmax(0,1fr)]',
 };
 
 const GAP_CLASS: Record<NonNullable<TwoColumnLayoutProps['gap']>, string> = {

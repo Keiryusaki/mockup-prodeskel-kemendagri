@@ -19,14 +19,14 @@ const TYPOLOGY = [
 export function ClassificationOverview() {
   return (
     <ChartPanel title="Klasifikasi Wilayah" description="Klasifikasi tingkat perkembangan desa/kelurahan">
-      <div className="grid flex-1 grid-cols-2 gap-3 lg:grid-cols-4">
+      <div className="grid flex-1 grid-cols-2 gap-3 lg:grid-cols-[repeat(3,minmax(0,1fr))_1.45fr]">
         {CLASSIFICATIONS.map((c) => (
           <ClassificationCard key={c.label} {...c} />
         ))}
-        <div className="flex flex-col items-center rounded-lg border border-border-subtle p-4 text-center">
-          <p className="text-sm font-semibold text-text-main">Tipologi Desa/Kelurahan</p>
-          <div className="mt-3">
-            <TypologyDonut segments={TYPOLOGY} total="83.961" />
+        <div className="flex flex-col items-center rounded-lg border border-border-subtle p-3 text-center">
+          <p className="text-[13px] font-semibold text-text-main">Tipologi Desa/Kelurahan</p>
+          <div className="mt-2.5 w-full">
+            <TypologyDonut segments={TYPOLOGY} total="83.961" size={88} strokeWidth={12} responsiveHorizontal />
           </div>
         </div>
       </div>

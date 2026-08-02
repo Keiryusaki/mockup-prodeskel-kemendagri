@@ -13,7 +13,7 @@ const Separator = () => <span className="h-3 w-px shrink-0 bg-white/20" aria-hid
 export function GovernmentBar() {
   return (
     <div className="bg-pd-primary-950 text-white">
-      <PageContainer className="flex flex-col gap-1 py-2 text-xs sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:py-0 sm:h-10">
+      <PageContainer className="flex flex-col gap-1 py-2 text-xs sm:h-10 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:py-0 xl:!max-w-none xl:!px-4 2xl:!px-6">
         <div className="flex items-center gap-2.5 leading-tight">
           <Image src={kemendagriLogo} alt="" aria-hidden="true" className="h-6 w-auto shrink-0" />
           <div>

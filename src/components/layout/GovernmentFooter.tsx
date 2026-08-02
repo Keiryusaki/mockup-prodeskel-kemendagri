@@ -4,6 +4,7 @@ import { ProdeskelMark } from '@/components/navigation/ProdeskelMark';
 
 const QUICK_LINKS = [
   { label: 'Tentang Prodeskel', href: '#' },
+  { label: 'Guideline Redesign', href: '/guideline-redesign' },
   { label: 'Kebijakan Privasi', href: '#' },
   { label: 'Syarat & Ketentuan', href: '#' },
   { label: 'Peta Situs', href: '#' },
@@ -32,6 +33,7 @@ export function GovernmentFooter() {
   return (
     <Footer
       style={darkScopeStyle}
+      className="prodeskel-government-footer"
       copyright="© 2026 Kementerian Dalam Negeri Republik Indonesia"
     >
       <div className="grid grid-cols-1 gap-10 md:grid-cols-4">

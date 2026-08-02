@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { LogIn, ChevronDown } from 'lucide-react';
 import { Button, Input, Icon, Search, Divider, type TopbarNavItem } from '@/ui';
 
@@ -12,6 +13,7 @@ export interface MobileNavigationDrawerProps {
 
 export function MobileNavigationDrawer({ open, onClose, items }: MobileNavigationDrawerProps) {
   const [expanded, setExpanded] = useState<string | null>(null);
+  const pathname = usePathname();
 
   if (!open) return null;
 
@@ -58,7 +60,7 @@ export function MobileNavigationDrawer({ open, onClose, items }: MobileNavigatio
                     href={item.href}
                     onClick={onClose}
                     className={`block rounded-md px-3 py-2.5 text-sm font-medium ${
-                      item.active ? 'bg-primary/10 text-primary' : 'text-text-main hover:bg-subtle'
+                      item.label === 'Beranda' && pathname === '/' ? 'bg-primary/10 text-primary' : 'text-text-main hover:bg-subtle'
                     }`}
                   >
                     {item.label}
@@ -71,7 +73,7 @@ export function MobileNavigationDrawer({ open, onClose, items }: MobileNavigatio
                         <a
                           href={child.href}
                           onClick={onClose}
-                          className="block rounded-md px-3 py-2 text-sm text-ink hover:bg-subtle"
+                          className={`block rounded-md px-3 py-2 text-sm ${pathname === child.href ? 'bg-primary/10 font-semibold text-primary' : 'text-ink hover:bg-subtle'}`}
                         >
                           {child.label}
                         </a>
