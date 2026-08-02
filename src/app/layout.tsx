@@ -7,10 +7,40 @@ import '@bynara-id/tokens/css';
 import '@/styles/themes/prodeskel.css';
 import '@/styles/globals.css';
 
+const title = 'Prodeskel — Profil Desa dan Kelurahan';
+const description =
+  'Data potensi, perkembangan, dan profil desa/kelurahan sebagai dasar perencanaan pembangunan yang tepat sasaran dan berkelanjutan.';
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+
 export const metadata: Metadata = {
-  title: 'Prodeskel — Profil Desa dan Kelurahan',
-  description:
-    'Data potensi, perkembangan, dan profil desa/kelurahan sebagai dasar perencanaan pembangunan yang tepat sasaran dan berkelanjutan.',
+  metadataBase: new URL('https://keiryusaki.github.io'),
+  title,
+  description,
+  alternates: {
+    canonical: `${basePath}/`,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'id_ID',
+    url: `${basePath}/`,
+    siteName: 'Prodeskel',
+    title,
+    description,
+    images: [
+      {
+        url: `${basePath}/og.jpg`,
+        width: 476,
+        height: 250,
+        alt: 'Prodeskel — Profil Desa dan Kelurahan',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+    images: [`${basePath}/og.jpg`],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
