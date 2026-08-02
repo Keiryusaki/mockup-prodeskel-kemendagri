@@ -18,13 +18,21 @@ export interface RegionalMapPanelProps {
   onSelectProvince: (name: string | null) => void;
 }
 
-function RegionInfoStrip({ name }: { name: string }) {
+function RegionInfoOverlay({ name, onDismiss }: { name: string; onDismiss: () => void }) {
   const shape = PROVINCE_SHAPES.find((p) => p.name === name);
   const data = PROVINCE_MOCK_DATA[name];
 
   return (
-    <div className="flex min-h-[88px] flex-col justify-center gap-1 rounded-lg border border-border-subtle bg-subtle px-4 py-2.5">
-      <div className="flex items-center justify-between gap-2">
+    <div className="absolute bottom-3 left-3 right-16 z-10 flex max-w-xl flex-col gap-1 rounded-lg border border-border-subtle bg-surface/95 px-3 py-2 shadow-md backdrop-blur-sm">
+      <IconButton
+        icon={<X size={14} aria-hidden="true" />}
+        aria-label="Tutup ringkasan wilayah"
+        variant="ghost"
+        size="sm"
+        className="!absolute !right-1.5 !top-1.5 !h-7 !w-7"
+        onClick={onDismiss}
+      />
+      <div className="flex items-center justify-between gap-2 pr-7">
         <p className="truncate text-sm font-semibold text-text-main">{name}</p>
         {shape ? (
           <p className="shrink-0 text-xs font-semibold text-primary">
@@ -132,6 +140,9 @@ export function RegionalMapPanel({ selectedProvince, onSelectProvince }: Regiona
         onSelectProvince={onSelectProvince}
         zoom={zoom}
       />
+      {selectedProvince ? (
+        <RegionInfoOverlay name={selectedProvince} onDismiss={() => onSelectProvince(null)} />
+      ) : null}
       <MapZoomControls
         zoom={zoom}
         onZoomIn={zoomIn}
@@ -179,16 +190,6 @@ export function RegionalMapPanel({ selectedProvince, onSelectProvince }: Regiona
         </div>
       </div>
 
-      <div className="mt-3">
-        {selectedProvince ? (
-          <RegionInfoStrip name={selectedProvince} />
-        ) : (
-          <p className="flex min-h-[88px] items-center justify-center rounded-lg border border-dashed border-border-subtle p-4 text-center text-sm text-ink">
-            Pilih wilayah pada peta untuk melihat ringkasan data.
-          </p>
-        )}
-      </div>
-
       {isFullscreen ? (
         <div
           className="fixed inset-0 z-modal flex items-center justify-center bg-pd-neutral-900/60 p-4 sm:p-8"
@@ -215,7 +216,7 @@ export function RegionalMapPanel({ selectedProvince, onSelectProvince }: Regiona
                 onClick={() => setIsFullscreen(false)}
               />
             </div>
-            <div className="relative mt-4 flex-1 overflow-hidden rounded-lg bg-subtle">{mapArea}</div>
+            <div className="relative mt-4 flex flex-1 items-center overflow-hidden rounded-lg bg-subtle">{mapArea}</div>
           </div>
         </div>
       ) : null}

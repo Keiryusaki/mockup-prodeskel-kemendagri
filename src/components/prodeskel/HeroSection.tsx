@@ -1,13 +1,14 @@
+import { Building2, Users, FileText, Calendar, BarChart3 } from 'lucide-react';
 import { Button, Heading, Text, Icon, ArrowRight } from '@/ui';
 import { PageContainer } from '@/components/layout/PageContainer';
 import { HeroBackground } from './HeroBackground';
 import { HeroIndonesiaMap } from './HeroIndonesiaMap';
 
 const FLOATING_STATS = [
-  { label: 'Desa/Kelurahan', value: '83.961' },
-  { label: 'Penduduk Terdata', value: '238,7 Juta' },
-  { label: 'Variabel Data', value: '1.793' },
-  { label: 'Pemutakhiran', value: '2026' },
+  { label: 'Desa/Kelurahan', value: '83.961', icon: Building2 },
+  { label: 'Penduduk Terdata', value: '238,7 Juta', icon: Users },
+  { label: 'Variabel Data', value: '1.793', icon: FileText },
+  { label: 'Pemutakhiran', value: '2026', icon: Calendar },
 ];
 
 export function HeroSection() {
@@ -28,7 +29,12 @@ export function HeroSection() {
             <Button className="!h-14" iconRight={<Icon icon={ArrowRight} size="sm" aria-hidden="true" />}>
               Jelajahi Data
             </Button>
-            <Button className="!h-14" variant="outline" tone="accent">
+            <Button
+              className="!h-14 !border-pd-secondary-700 !text-pd-secondary-700"
+              variant="outline"
+              tone="accent"
+              iconLeft={<BarChart3 size={16} aria-hidden="true" />}
+            >
               Lihat Progres
             </Button>
           </div>
@@ -43,10 +49,15 @@ export function HeroSection() {
             {FLOATING_STATS.map((stat) => (
               <div
                 key={stat.label}
-                className="flex h-[68px] w-full flex-col justify-center rounded-[12px] border border-border-subtle bg-surface/95 px-4 shadow-md backdrop-blur-sm sm:w-[220px]"
+                className="flex h-[68px] w-full items-center gap-2.5 rounded-[12px] border border-border-subtle bg-surface/95 px-3.5 shadow-md backdrop-blur-sm sm:w-[220px]"
               >
-                <p className="truncate text-xs text-ink">{stat.label}</p>
-                <p className="truncate text-xl font-bold text-text-main">{stat.value}</p>
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <stat.icon size={18} aria-hidden="true" />
+                </span>
+                <div className="min-w-0">
+                  <p className="truncate text-xs text-ink">{stat.label}</p>
+                  <p className="truncate text-xl font-bold text-text-main">{stat.value}</p>
+                </div>
               </div>
             ))}
           </div>

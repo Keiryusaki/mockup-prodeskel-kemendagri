@@ -2,9 +2,273 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Slim, low-noise scrollbars. The thumb stays transparent until the
+   scrollable surface is hovered, then follows the Kemendagri blue palette. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+*:hover {
+  scrollbar-color: rgb(var(--pd-primary-300)) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background-color: transparent;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--pd-primary-300));
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(var(--pd-primary-600));
+}
+
+@keyframes proposal-slide-enter {
+  from {
+    opacity: 0;
+    transform: translateX(22px) scale(0.992);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes proposal-slide-enter-prev {
+  from {
+    opacity: 0;
+    transform: translateX(-22px) scale(0.992);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes proposal-slide-exit {
+  from {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-18px) scale(0.994);
+  }
+}
+
+@keyframes proposal-slide-exit-prev {
+  from {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(18px) scale(0.994);
+  }
+}
+
+@keyframes proposal-item-enter {
+  from {
+    opacity: 0;
+    filter: blur(3px);
+    scale: 0.985;
+    translate: 0 16px;
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    scale: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes proposal-item-exit {
+  from {
+    opacity: 1;
+    scale: 1;
+    translate: 0 0;
+  }
+  to {
+    opacity: 0;
+    scale: 0.99;
+    translate: 0 -8px;
+  }
+}
+
+.proposal-slide-enter {
+  animation: proposal-slide-enter 360ms ease-out both;
+}
+
+.proposal-slide-enter--prev {
+  animation-name: proposal-slide-enter-prev;
+}
+
+.proposal-slide-exit {
+  animation: proposal-slide-exit 420ms ease-in both;
+}
+
+.proposal-slide-exit--prev {
+  animation-name: proposal-slide-exit-prev;
+}
+
+.proposal-slide-enter:not(.proposal-items-ready) [data-proposal-reveal] {
+  opacity: 0;
+}
+
+.proposal-slide-enter.proposal-items-ready [data-proposal-reveal] {
+  animation: proposal-item-enter 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(90ms + var(--proposal-reveal-delay, 0ms));
+}
+
+.proposal-slide-exit.proposal-items-ready [data-proposal-reveal] {
+  animation: proposal-item-exit 220ms ease-in both;
+  animation-delay: var(--proposal-reveal-delay, 0ms);
+}
+
+.proposal-slide-enter.proposal-items-complete [data-proposal-reveal] {
+  animation: none;
+  filter: none;
+  opacity: 1;
+  scale: 1;
+  translate: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proposal-slide-enter,
+  .proposal-slide-enter--prev,
+  .proposal-slide-exit,
+  .proposal-slide-exit--prev,
+  .proposal-slide-enter.proposal-items-ready [data-proposal-reveal],
+  .proposal-slide-exit.proposal-items-ready [data-proposal-reveal] {
+    animation: none;
+  }
+
+  .proposal-slide-enter:not(.proposal-items-ready) [data-proposal-reveal] {
+    opacity: 1;
+  }
+}
+
+@font-face {
+  font-family: 'Prodeskel Material Symbols';
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url('../assets/fonts/material-symbols-filled.ttf') format('truetype');
+}
+
+.material-symbols-filled {
+  display: inline-block;
+  overflow: hidden;
+  width: 1em;
+  font-family: 'Prodeskel Material Symbols';
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'liga';
+  font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+}
+
 @layer base {
   body {
     @apply bg-app text-text-main antialiased;
     font-family: var(--font-sans);
+  }
+}
+
+@layer components {
+  /* Local presentation adapter: keep the Nara primitive intact while the
+     Prodeskel overview uses a larger, vertically centered visual anchor. */
+  .prodeskel-stat-card .nara-stat-card__icon {
+    @apply h-14 w-14 rounded-full;
+  }
+
+  .prodeskel-stat-card .nara-stat-card__meta {
+    @apply mt-1;
+  }
+
+  .prodeskel-data-category-card .nara-card__body {
+    @apply flex h-full flex-col;
+  }
+
+  .prodeskel-activity-feed .nara-timeline__item {
+    padding-bottom: var(--pd-space-3);
+  }
+
+  .prodeskel-information-card .nara-card__body {
+    @apply flex h-full flex-col;
+  }
+
+  /* Data explorer uses a light interaction surface for select/menu states.
+     Nara's default secondary token is intentionally stronger, so scope the
+     proposal table pattern without changing the primitive globally. */
+  .prodeskel-data-explorer {
+    --color-secondary: var(--pd-primary-50);
+  }
+
+  .prodeskel-data-explorer .nara-select__trigger:disabled {
+    @apply bg-subtle text-text-muted;
+    opacity: 0.72;
+  }
+
+  /* Use the themed trailing calendar while the full native date input remains
+     the picker trigger. The browser's tiny indicator would otherwise duplicate
+     the icon and keep the clickable affordance limited to its own hit area. */
+  .prodeskel-date-input .nara-input {
+    cursor: pointer;
+  }
+
+  .prodeskel-date-input .nara-input-affix__trailing {
+    pointer-events: none;
+  }
+
+  .prodeskel-date-input .nara-input::-webkit-calendar-picker-indicator {
+    width: 0;
+    height: 0;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* One wide shell for navigation, page content, and footer. Backgrounds stay
+     full-bleed while their inner content follows the same horizontal axis. */
+  .prodeskel-main-header .nara-topbar__container,
+  .prodeskel-government-footer .nara-footer__inner {
+    max-width: var(--pd-container-max);
+    padding-left: var(--pd-container-padding-mobile);
+    padding-right: var(--pd-container-padding-mobile);
+  }
+
+  @media (min-width: 640px) {
+    .prodeskel-main-header .nara-topbar__container,
+    .prodeskel-government-footer .nara-footer__inner {
+      padding-left: var(--pd-container-padding-tablet);
+      padding-right: var(--pd-container-padding-tablet);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .prodeskel-main-header .nara-topbar__container,
+    .prodeskel-government-footer .nara-footer__inner {
+      padding-left: var(--pd-container-padding-desktop);
+      padding-right: var(--pd-container-padding-desktop);
+    }
   }
 }

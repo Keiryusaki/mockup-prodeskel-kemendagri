@@ -30,6 +30,13 @@ export {
   Heading,
   Spinner,
   Skeleton,
+  Select,
+  Checkbox,
+  Pagination,
+  Popover,
+  Dialog,
+  ToastProvider,
+  useToast,
   LangToggle,
   // Nara has no standalone "Dropdown" — Menu is its equivalent primitive.
   Menu as Dropdown,
@@ -73,6 +80,14 @@ export type {
   TextProps,
   HeadingProps,
   HeadingLevel,
+  SelectProps,
+  SelectOption,
+  CheckboxProps,
+  PaginationProps,
+  PopoverProps,
+  DialogProps,
+  ToastItem,
+  ToastTone,
 } from '@bynara-id/ui';
 
 export {

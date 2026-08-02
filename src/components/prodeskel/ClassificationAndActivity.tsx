@@ -5,8 +5,8 @@ import { ProdeskelActivityFeed } from './ProdeskelActivityFeed';
 
 export function ClassificationAndActivity() {
   return (
-    <Section tone="subtle" padding="compact" id="klasifikasi">
-      <TwoColumnLayout left={<ClassificationOverview />} right={<ProdeskelActivityFeed />} />
+    <Section tone="page" padding="compact" id="klasifikasi">
+      <TwoColumnLayout ratio="3:2" gap="16px" left={<ClassificationOverview />} right={<ProdeskelActivityFeed />} />
     </Section>
   );
 }

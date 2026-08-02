@@ -1,5 +1,6 @@
-import { Headphones, Phone, Mail, Clock } from 'lucide-react';
+import { Phone, Mail, Clock } from 'lucide-react';
 import { Card, Heading, Button } from '@/ui';
+import { MaterialSymbol } from '@/ui/MaterialSymbol';
 
 export interface HelpCenterCardProps {
   phone: string;
@@ -9,30 +10,36 @@ export interface HelpCenterCardProps {
 
 export function HelpCenterCard({ phone, email, hours }: HelpCenterCardProps) {
   return (
-    <Card className="flex h-full flex-col">
-      <div className="flex items-center gap-2.5">
-        <Headphones size={18} className="shrink-0 text-primary" aria-hidden="true" />
-        <Heading level="5" as="h3">
-          Kontak / Help Center
-        </Heading>
+    <Card compact className="prodeskel-information-card h-full">
+      <div className="grid h-full grid-cols-[52px_minmax(0,1fr)] gap-3">
+        <div className="flex justify-center pt-0.5">
+          <MaterialSymbol name="support_agent" className="shrink-0 text-5xl text-pd-info" />
+        </div>
+        <div className="flex min-w-0 flex-col">
+          <Heading level="6" as="h3">
+            Kontak / Help Center
+          </Heading>
+          <ul className="mt-2.5 flex flex-1 flex-col gap-1.5 text-xs leading-5 text-ink">
+            <li className="flex items-center gap-2">
+              <Phone size={15} className="shrink-0" aria-hidden="true" />
+              <span>{phone}</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <Mail size={15} className="shrink-0" aria-hidden="true" />
+              <span>{email}</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <Clock size={15} className="shrink-0" aria-hidden="true" />
+              <span>{hours}</span>
+            </li>
+          </ul>
+          <div className="mt-auto pt-3">
+            <Button size="sm" variant="outline" className="!h-8">
+              Ajukan Pertanyaan
+            </Button>
+          </div>
+        </div>
       </div>
-      <ul className="mt-3 flex flex-1 flex-col gap-2 text-sm text-ink">
-        <li className="flex items-center gap-2">
-          <Phone size={15} className="shrink-0" aria-hidden="true" />
-          <span>{phone}</span>
-        </li>
-        <li className="flex items-center gap-2">
-          <Mail size={15} className="shrink-0" aria-hidden="true" />
-          <span>{email}</span>
-        </li>
-        <li className="flex items-center gap-2">
-          <Clock size={15} className="shrink-0" aria-hidden="true" />
-          <span>{hours}</span>
-        </li>
-      </ul>
-      <Button size="sm" variant="outline" className="mt-4 self-start">
-        Ajukan Pertanyaan
-      </Button>
     </Card>
   );
 }

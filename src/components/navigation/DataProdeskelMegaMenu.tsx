@@ -1,14 +1,14 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import { ArrowRight, ChevronDown } from 'lucide-react';
-import { Button } from '@/ui';
 import { DATA_CATEGORIES } from '@/components/prodeskel/data-categories';
 
 const OPEN_DELAY = 120;
 const CLOSE_DELAY = 180;
 
-export function DataProdeskelMegaMenu() {
+export function DataProdeskelMegaMenu({ active = false }: { active?: boolean }) {
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const openTimer = useRef<number | undefined>(undefined);
@@ -59,7 +59,7 @@ export function DataProdeskelMegaMenu() {
         aria-haspopup="true"
         aria-expanded={open}
         className={`inline-flex items-center gap-1 rounded-lg border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pd-secondary-400 ${
-          open
+          open || active
             ? 'border-pd-primary-100 bg-pd-primary-50 text-pd-primary-700'
             : 'border-transparent text-text-main hover:border-pd-primary-100 hover:bg-pd-primary-50 hover:text-pd-primary-700'
         }`}
@@ -84,21 +84,21 @@ export function DataProdeskelMegaMenu() {
                   Indonesia.
                 </p>
               </div>
-              <Button
-                size="sm"
-                className="mt-6 self-start"
-                iconRight={<ArrowRight size={15} aria-hidden="true" />}
+              <Link
+                href="/data-prodeskel/kependudukan"
                 onClick={() => setOpen(false)}
+                className="mt-6 inline-flex h-8 self-start items-center gap-1.5 rounded-md bg-primary px-3 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pd-secondary-400"
               >
-                Lihat Seluruh Data
-              </Button>
+                Buka Data Kependudukan
+                <ArrowRight size={15} aria-hidden="true" />
+              </Link>
             </div>
 
             <div className="grid grid-cols-2 gap-1 p-5">
               {DATA_CATEGORIES.map((cat) => (
                 <a
                   key={cat.title}
-                  href="#data-utama"
+                  href={cat.href ?? '/#data-utama'}
                   role="menuitem"
                   onClick={() => setOpen(false)}
                   className="group flex items-start gap-3 rounded-lg p-3 transition-colors hover:bg-pd-primary-50"

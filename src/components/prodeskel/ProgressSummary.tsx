@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import Image from 'next/image';
 import { Check, ArrowRight } from 'lucide-react';
 import { Button, Icon, ChevronDown, Dropdown, DropdownTrigger, DropdownPanel, DropdownItem } from '@/ui';
 import { ChartPanel } from '@/components/data-display/ChartPanel';
@@ -69,18 +70,22 @@ export function ProgressSummary({ selectedProvince }: ProgressSummaryProps) {
         </div>
       }
     >
-      <div className="grid grid-cols-1 items-start gap-5 lg:grid-cols-[minmax(0,1fr)_250px]">
+      <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-[minmax(0,1fr)_240px]">
         <ProgressBarList
-          items={sortedProvinces.map((r) => ({ label: r.name, value: r.progress }))}
+          items={sortedProvinces.map((r) => ({
+            label: r.name,
+            value: r.progress,
+            icon: <Image src={r.logo} alt="" className="h-full w-full object-contain" aria-hidden="true" />,
+          }))}
           highlightLabel={selectedProvince}
         />
-        <div className="lg:border-l lg:border-border-subtle lg:pl-5">
+        <div className="lg:border-l lg:border-border-subtle lg:pl-4">
           <RankedRegionList
-            title="Kabupaten/Kota Teratas"
+            title="Top Kabupaten/Kota"
             items={TOP_REGENCIES.map((r) => ({ rank: r.rank, name: r.name, value: r.progress }))}
           />
-          <Button variant="outline" size="sm" fullWidth className="mt-3" iconRight={<ArrowRight size={14} aria-hidden="true" />}>
-            Lihat Peringkat Lengkap
+          <Button variant="outline" size="sm" fullWidth className="mt-2" iconRight={<ArrowRight size={14} aria-hidden="true" />}>
+            Lihat Selengkapnya
           </Button>
         </div>
       </div>

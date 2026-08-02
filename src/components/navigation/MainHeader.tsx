@@ -16,7 +16,8 @@ export function MainHeader() {
       <Topbar
         sticky
         contained
-        className="border-b border-border-subtle bg-surface"
+        maxWidth="var(--pd-container-max)"
+        className="prodeskel-main-header border-b border-border-subtle bg-surface"
         brand={<ProdeskelMark />}
         actions={
           <div className="flex items-center gap-2">

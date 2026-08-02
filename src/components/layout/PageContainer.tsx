@@ -13,9 +13,9 @@ export interface PageContainerProps extends HTMLAttributes<HTMLElement> {
 export function PageContainer({ children, className, ...rest }: PageContainerProps) {
   return (
     <Container
-      size="xl"
+      size="2xl"
       flush
-      className={`px-4 md:px-6 lg:px-8 ${className ?? ''}`.trim()}
+      className={`!box-border !w-full !px-4 md:!px-6 lg:!px-8 ${className ?? ''}`.trim()}
       {...rest}
     >
       {children}

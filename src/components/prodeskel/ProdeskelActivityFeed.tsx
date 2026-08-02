@@ -1,5 +1,14 @@
+import Image from 'next/image';
 import { ChartPanel } from '@/components/data-display/ChartPanel';
 import { ActivityFeed, type ActivityFeedItemData } from '@/components/data-display/ActivityFeed';
+import jawaTengahLogo from '@/assets/provinces/jawa-tengah.webp';
+import sulawesiSelatanLogo from '@/assets/provinces/sulawesi-selatan.webp';
+import nusaTenggaraBaratLogo from '@/assets/provinces/nusa-tenggara-barat.webp';
+import kalimantanTimurLogo from '@/assets/provinces/kalimantan-timur.webp';
+
+const regionIcon = (src: typeof jawaTengahLogo) => (
+  <Image src={src} alt="" className="h-5 w-5 object-contain" aria-hidden="true" />
+);
 
 const ACTIVITIES: ActivityFeedItemData[] = [
   {
@@ -8,6 +17,7 @@ const ACTIVITIES: ActivityFeedItemData[] = [
     time: '31 Juli 2026, 14.32 WIB',
     badge: 'Pemutakhiran',
     tone: 'primary',
+    icon: regionIcon(jawaTengahLogo),
   },
   {
     actor: 'Pemerintah Kota Makassar',
@@ -15,6 +25,7 @@ const ACTIVITIES: ActivityFeedItemData[] = [
     time: '31 Juli 2026, 11.08 WIB',
     badge: 'Validasi',
     tone: 'success',
+    icon: regionIcon(sulawesiSelatanLogo),
   },
   {
     actor: 'Pemerintah Kabupaten Lombok Utara',
@@ -22,6 +33,7 @@ const ACTIVITIES: ActivityFeedItemData[] = [
     time: '31 Juli 2026, 09.45 WIB',
     badge: 'Input Data',
     tone: 'info',
+    icon: regionIcon(nusaTenggaraBaratLogo),
   },
   {
     actor: 'Pemerintah Provinsi Kalimantan Timur',
@@ -29,6 +41,7 @@ const ACTIVITIES: ActivityFeedItemData[] = [
     time: '31 Juli 2026, 08.21 WIB',
     badge: 'Laporan',
     tone: 'warning',
+    icon: regionIcon(kalimantanTimurLogo),
   },
 ];
 
@@ -46,7 +59,7 @@ export function ProdeskelActivityFeed() {
         </a>
       }
     >
-      <ActivityFeed items={ACTIVITIES} className="flex-1" />
+      <ActivityFeed items={ACTIVITIES} className="prodeskel-activity-feed flex-1" />
     </ChartPanel>
   );
 }
