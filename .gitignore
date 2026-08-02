@@ -1,0 +1,16 @@
+node_modules
+.next
+out
+.env
+.env*.local
+npm-debug.log*
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+
+# Local development and visual-review artifacts
+.dev-*.log
+/preview/*
+/slide reference/
+/favicon.png
+/public/fonts/
