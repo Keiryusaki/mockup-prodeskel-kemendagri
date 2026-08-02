@@ -86,7 +86,7 @@ export function DataProdeskelMegaMenu({ active = false }: { active?: boolean }) 
                 </p>
               </div>
               <Link
-                href={withBasePath('/data-prodeskel/kependudukan')}
+                href="/data-prodeskel/kependudukan"
                 onClick={() => setOpen(false)}
                 className="mt-6 inline-flex h-8 self-start items-center gap-1.5 rounded-md bg-primary px-3 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pd-secondary-400"
               >

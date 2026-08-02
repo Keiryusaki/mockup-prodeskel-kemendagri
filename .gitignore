@@ -13,4 +13,5 @@ next-env.d.ts
 /preview/*
 /slide reference/
 /favicon.png
+/og.jpg
 /public/fonts/
